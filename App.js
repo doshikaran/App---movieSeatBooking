@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, View } from "react-native";
+import Navigation from "./navigation/navigation";
+import { MovieContext } from "./Context";
+import { StripeProvider } from "@stripe/stripe-react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <View className=" bg-gray-200 h-full">
+        <MovieContext>
+          <StripeProvider publishableKey="pk_test_51MgDccEQ0sQuoqnG3DdJv9lxwXQ0Ty6s5asWf3xmVPbxsWh47YgYt82W6qdZWBxkoNArajz1Yr3nnHTYlNFo4rb700ubE1DXng">
+            <Navigation />
+          </StripeProvider>
+        </MovieContext>
+      </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
